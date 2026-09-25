@@ -10,6 +10,7 @@ import KitchenTabPage from "./pages/KitchenTabPage";
 import JournalPage from "./pages/JournalPage";
 import SettingsPage from "./pages/SettingsPage";
 import BadgeGalleryPage from "./pages/BadgeGalleryPage";
+import CookingModePage from "./pages/CookingModePage";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/recipes/:id" element={<RecipeDetailPage />} />
         <Route path="/recipes/:id/edit" element={<RecipeEditPage />} />
         <Route path="/kitchen" element={<KitchenTabPage />} />
+        <Route path="/kitchen/:id/cook" element={<CookingModePage />} />
         <Route path="/journal" element={<JournalPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/settings/badges" element={<BadgeGalleryPage />} />

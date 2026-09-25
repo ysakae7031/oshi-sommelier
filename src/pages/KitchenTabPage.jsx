@@ -1,5 +1,5 @@
 import PageShell from "../components/layout/PageShell";
-import RecipeCard from "../components/home/RecipeCard";
+import PinnedRecipeCard from "../components/home/PinnedRecipeCard";
 import { useRecipesContext } from "../context/RecipesContext";
 
 export default function KitchenTabPage() {
@@ -19,7 +19,7 @@ export default function KitchenTabPage() {
       ) : (
         <div className="flex flex-col gap-3">
           {pinnedRecipes.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} />
+            <PinnedRecipeCard key={recipe.id} recipe={recipe} />
           ))}
         </div>
       )}

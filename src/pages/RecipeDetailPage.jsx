@@ -114,6 +114,16 @@ export default function RecipeDetailPage() {
         <EatLogDetail recipe={recipe} onReproduce={handleReproduce} />
       ) : (
         <>
+          {recipe.steps.length > 0 && (
+            <button
+              type="button"
+              onClick={() => navigate(`/kitchen/${id}/cook`)}
+              className="mb-5 w-full rounded-btn bg-terracotta py-3 text-sm font-bold text-white"
+            >
+              🍳 キッチンモードで作る
+            </button>
+          )}
+
           <Section title="材料" className="mb-5">
             <div className="mb-3">
               <ServingsScaler
