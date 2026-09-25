@@ -11,6 +11,7 @@ import JournalPage from "./pages/JournalPage";
 import SettingsPage from "./pages/SettingsPage";
 import BadgeGalleryPage from "./pages/BadgeGalleryPage";
 import CookingModePage from "./pages/CookingModePage";
+import ShoppingListPage from "./pages/ShoppingListPage";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/recipes/:id/edit" element={<RecipeEditPage />} />
         <Route path="/kitchen" element={<KitchenTabPage />} />
         <Route path="/kitchen/:id/cook" element={<CookingModePage />} />
+        <Route path="/shopping" element={<ShoppingListPage />} />
         <Route path="/journal" element={<JournalPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/settings/badges" element={<BadgeGalleryPage />} />

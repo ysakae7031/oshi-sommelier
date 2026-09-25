@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import PageShell from "../components/layout/PageShell";
 import SearchBar from "../components/home/SearchBar";
 import FilterChips from "../components/home/FilterChips";
@@ -22,7 +23,19 @@ export default function HomePage() {
   );
 
   return (
-    <PageShell title="KitchDom" fab={<Fab />}>
+    <PageShell
+      title="KitchDom"
+      fab={<Fab />}
+      action={
+        <Link
+          to="/shopping"
+          aria-label="買い物リスト"
+          className="flex h-9 w-9 items-center justify-center rounded-full text-xl active:bg-linen-edge"
+        >
+          🛒
+        </Link>
+      }
+    >
       {recipes.length > 0 && <BadgeSummaryBar recipes={recipes} />}
 
       <div className="mb-3">

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import PageShell from "../components/layout/PageShell";
 import PinnedRecipeCard from "../components/home/PinnedRecipeCard";
 import { useRecipesContext } from "../context/RecipesContext";
@@ -6,7 +7,18 @@ export default function KitchenTabPage() {
   const { pinnedRecipes } = useRecipesContext();
 
   return (
-    <PageShell title="今週の献立">
+    <PageShell
+      title="今週の献立"
+      action={
+        <Link
+          to="/shopping"
+          aria-label="買い物リスト"
+          className="flex h-9 w-9 items-center justify-center rounded-full text-xl active:bg-linen-edge"
+        >
+          🛒
+        </Link>
+      }
+    >
       {pinnedRecipes.length === 0 ? (
         <div className="mt-16 flex flex-col items-center gap-2 text-center text-warm-gray">
           <span className="text-4xl">📌</span>
