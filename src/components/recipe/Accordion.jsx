@@ -15,7 +15,15 @@ export default function Accordion({ title, defaultOpen = true, children }) {
         </span>
         <span className="text-warm-gray">{open ? "︿" : "﹀"}</span>
       </button>
-      {open && <div className="border-t border-linen-edge p-4">{children}</div>}
+      <div
+        className={`grid transition-[grid-template-rows] duration-200 ease-out ${
+          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="border-t border-linen-edge p-4">{children}</div>
+        </div>
+      </div>
     </Card>
   );
 }

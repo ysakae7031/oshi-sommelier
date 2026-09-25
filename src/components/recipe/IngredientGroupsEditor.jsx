@@ -2,6 +2,7 @@ import { useState } from "react";
 import { inputClass } from "./Field";
 import { parseIngredientText } from "../../utils/parser";
 import { createIngredient, createIngredientGroup } from "../../utils/models";
+import { preventFocusSteal, deferListMutation } from "../../utils/preventFocusSteal";
 
 export default function IngredientGroupsEditor({ groups, onChange }) {
   const [pasteText, setPasteText] = useState("");
@@ -13,11 +14,11 @@ export default function IngredientGroupsEditor({ groups, onChange }) {
   }
 
   function removeGroup(index) {
-    onChange(groups.filter((_, i) => i !== index));
+    deferListMutation(() => onChange(groups.filter((_, i) => i !== index)));
   }
 
   function addGroup() {
-    onChange([...groups, createIngredientGroup()]);
+    deferListMutation(() => onChange([...groups, createIngredientGroup()]));
   }
 
   function updateItem(groupIndex, itemIndex, updates) {
@@ -29,15 +30,19 @@ export default function IngredientGroupsEditor({ groups, onChange }) {
   }
 
   function removeItem(groupIndex, itemIndex) {
-    const group = groups[groupIndex];
-    updateGroup(groupIndex, {
-      items: group.items.filter((_, i) => i !== itemIndex),
+    deferListMutation(() => {
+      const group = groups[groupIndex];
+      updateGroup(groupIndex, {
+        items: group.items.filter((_, i) => i !== itemIndex),
+      });
     });
   }
 
   function addItem(groupIndex) {
-    const group = groups[groupIndex];
-    updateGroup(groupIndex, { items: [...group.items, createIngredient()] });
+    deferListMutation(() => {
+      const group = groups[groupIndex];
+      updateGroup(groupIndex, { items: [...group.items, createIngredient()] });
+    });
   }
 
   function importParsed() {
@@ -83,6 +88,7 @@ export default function IngredientGroupsEditor({ groups, onChange }) {
             />
             <button
               type="button"
+              onMouseDown={preventFocusSteal}
               onClick={() => removeGroup(gi)}
               className="shrink-0 text-sm text-terracotta"
             >
@@ -109,6 +115,7 @@ export default function IngredientGroupsEditor({ groups, onChange }) {
                 />
                 <button
                   type="button"
+                  onMouseDown={preventFocusSteal}
                   onClick={() => removeItem(gi, ii)}
                   aria-label="材料を削除"
                   className="shrink-0 px-1 text-warm-gray"
@@ -120,6 +127,7 @@ export default function IngredientGroupsEditor({ groups, onChange }) {
           </div>
           <button
             type="button"
+            onMouseDown={preventFocusSteal}
             onClick={() => addItem(gi)}
             className="mt-2 text-sm font-medium text-sage"
           >
@@ -130,6 +138,7 @@ export default function IngredientGroupsEditor({ groups, onChange }) {
 
       <button
         type="button"
+        onMouseDown={preventFocusSteal}
         onClick={addGroup}
         className="text-sm font-medium text-sage"
       >

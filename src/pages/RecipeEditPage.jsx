@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import PageShell from "../components/layout/PageShell";
 import RecipeForm from "../components/recipe/RecipeForm";
 import EatLogForm from "../components/recipe/EatLogForm";
+import DuplicateUrlWarning from "../components/recipe/DuplicateUrlWarning";
 import { useRecipesContext } from "../context/RecipesContext";
 
 export default function RecipeEditPage() {
@@ -39,6 +40,8 @@ export default function RecipeEditPage() {
         </button>
       }
     >
+      {recipe.type !== "eat" && <DuplicateUrlWarning url={recipe.url} excludeId={id} />}
+
       {recipe.type === "eat" ? (
         <EatLogForm recipe={recipe} onChange={setRecipe} />
       ) : (

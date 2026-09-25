@@ -52,7 +52,7 @@ export default function CookingModePage() {
 
   if (phase === "intro") {
     return (
-      <div className="min-h-screen bg-charcoal p-5 text-white">
+      <div className="page-enter min-h-screen bg-charcoal p-5 text-white">
         <div className="mb-4 flex items-center justify-between">
           <button
             type="button"
@@ -117,7 +117,8 @@ export default function CookingModePage() {
       </div>
 
       <div
-        className="flex flex-1 cursor-pointer flex-col justify-center gap-5 px-6 py-4"
+        key={stepIndex}
+        className="page-enter flex flex-1 cursor-pointer flex-col justify-center gap-5 px-6 py-4"
         onClick={goNext}
       >
         <p className="font-display text-3xl font-bold leading-snug">{step.text}</p>

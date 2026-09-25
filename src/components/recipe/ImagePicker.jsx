@@ -1,3 +1,5 @@
+import { preventFocusSteal, deferListMutation } from "../../utils/preventFocusSteal";
+
 const MAX_DIMENSION = 800;
 
 function resizeImage(file) {
@@ -30,7 +32,7 @@ export default function ImagePicker({ images, onChange }) {
   }
 
   function removeImage(index) {
-    onChange(images.filter((_, i) => i !== index));
+    deferListMutation(() => onChange(images.filter((_, i) => i !== index)));
   }
 
   return (
@@ -41,6 +43,7 @@ export default function ImagePicker({ images, onChange }) {
             <img src={src} alt="" className="h-full w-full object-cover" />
             <button
               type="button"
+              onMouseDown={preventFocusSteal}
               onClick={() => removeImage(i)}
               className="absolute right-0.5 top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-charcoal/70 text-xs text-white"
               aria-label="画像を削除"

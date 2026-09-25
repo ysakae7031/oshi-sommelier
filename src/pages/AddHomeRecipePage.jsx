@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import PageShell from "../components/layout/PageShell";
 import RecipeForm from "../components/recipe/RecipeForm";
 import Field, { inputClass } from "../components/recipe/Field";
+import DuplicateUrlWarning from "../components/recipe/DuplicateUrlWarning";
 import { useRecipesContext } from "../context/RecipesContext";
 import { createRecipe, RECIPE_TYPES } from "../utils/models";
 
@@ -60,6 +61,8 @@ export default function AddHomeRecipePage() {
           詳しく記録
         </button>
       </div>
+
+      <DuplicateUrlWarning url={recipe.url} excludeId={recipe.id} />
 
       {mode === "quick" ? (
         <div>

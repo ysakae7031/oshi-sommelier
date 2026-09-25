@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import Accordion from "./Accordion";
 import Field, { inputClass } from "./Field";
 import ChipToggleGroup from "./ChipToggleGroup";
@@ -12,8 +13,13 @@ import {
   COSTS,
   SEASONS,
 } from "../../utils/models";
+import { useRecipesContext } from "../../context/RecipesContext";
+import { getTagSuggestions } from "../../utils/tags";
 
 export default function RecipeForm({ recipe, onChange }) {
+  const { recipes } = useRecipesContext();
+  const tagSuggestions = useMemo(() => getTagSuggestions(recipes), [recipes]);
+
   function set(patch) {
     onChange({ ...recipe, ...patch });
   }
@@ -84,7 +90,11 @@ export default function RecipeForm({ recipe, onChange }) {
           </select>
         </Field>
         <Field label="タグ">
-          <TagEditor tags={recipe.tags} onChange={(tags) => set({ tags })} />
+          <TagEditor
+            tags={recipe.tags}
+            onChange={(tags) => set({ tags })}
+            suggestions={tagSuggestions}
+          />
         </Field>
       </Accordion>
 

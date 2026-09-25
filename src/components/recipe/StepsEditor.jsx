@@ -1,5 +1,6 @@
 import { inputClass } from "./Field";
 import { createStep, HEAT_LEVELS } from "../../utils/models";
+import { preventFocusSteal, deferListMutation } from "../../utils/preventFocusSteal";
 
 export default function StepsEditor({ steps, onChange }) {
   function updateStep(index, updates) {
@@ -7,11 +8,11 @@ export default function StepsEditor({ steps, onChange }) {
   }
 
   function removeStep(index) {
-    onChange(steps.filter((_, i) => i !== index));
+    deferListMutation(() => onChange(steps.filter((_, i) => i !== index)));
   }
 
   function addStep() {
-    onChange([...steps, createStep()]);
+    deferListMutation(() => onChange([...steps, createStep()]));
   }
 
   return (
@@ -24,6 +25,7 @@ export default function StepsEditor({ steps, onChange }) {
             </span>
             <button
               type="button"
+              onMouseDown={preventFocusSteal}
               onClick={() => removeStep(i)}
               className="text-sm text-warm-gray"
             >
@@ -69,6 +71,7 @@ export default function StepsEditor({ steps, onChange }) {
       ))}
       <button
         type="button"
+        onMouseDown={preventFocusSteal}
         onClick={addStep}
         className="text-sm font-medium text-sage"
       >
