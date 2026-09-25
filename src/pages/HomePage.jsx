@@ -30,7 +30,7 @@ export default function HomePage() {
         <Link
           to="/shopping"
           aria-label="買い物リスト"
-          className="flex h-9 w-9 items-center justify-center rounded-full text-xl active:bg-linen-edge"
+          className="flex h-11 w-11 items-center justify-center rounded-full text-xl active:bg-linen-edge"
         >
           🛒
         </Link>

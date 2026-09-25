@@ -12,7 +12,7 @@ export default function ServingsScaler({ multiplier, onChange, baseServings }) {
             key={preset}
             type="button"
             onClick={() => onChange(preset)}
-            className={`rounded-pill px-2.5 py-1 text-xs font-bold transition-colors ${
+            className={`min-h-[44px] rounded-pill px-2.5 py-1 text-xs font-bold transition-colors ${
               multiplier === preset
                 ? "bg-terracotta text-white"
                 : "border border-linen-edge bg-card text-charcoal"

@@ -16,7 +16,7 @@ export default function ChipToggleGroup({ options, value, onChange }) {
             key={option}
             type="button"
             onClick={() => toggle(option)}
-            className={`rounded-pill px-3 py-1.5 text-sm font-medium transition-colors ${
+            className={`min-h-[44px] rounded-pill px-3 py-1.5 text-sm font-medium transition-colors ${
               active
                 ? "bg-sage text-white"
                 : "border border-linen-edge bg-card text-charcoal"

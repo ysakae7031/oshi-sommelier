@@ -29,7 +29,7 @@ export default function TagEditor({ tags, onChange, suggestions = [] }) {
         {tags.map((tag) => (
           <span
             key={tag}
-            className="flex items-center gap-1 rounded-pill bg-sage-light px-3 py-1 text-sm text-sage"
+            className="flex min-h-[44px] items-center gap-1 rounded-pill bg-sage-light px-3 py-1 text-sm text-sage"
           >
             {tag}
             <button
@@ -37,7 +37,7 @@ export default function TagEditor({ tags, onChange, suggestions = [] }) {
               onMouseDown={preventFocusSteal}
               onClick={() => remove(tag)}
               aria-label={`${tag}を削除`}
-              className="text-sage"
+              className="flex h-6 w-6 items-center justify-center text-base text-sage"
             >
               ×
             </button>
@@ -66,7 +66,7 @@ export default function TagEditor({ tags, onChange, suggestions = [] }) {
               type="button"
               onMouseDown={preventFocusSteal}
               onClick={() => add(tag)}
-              className="rounded-pill border border-linen-edge bg-card px-3 py-1 text-sm text-warm-gray"
+              className="min-h-[44px] rounded-pill border border-linen-edge bg-card px-3 py-1 text-sm text-warm-gray"
             >
               + {tag}
             </button>

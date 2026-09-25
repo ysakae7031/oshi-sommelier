@@ -29,7 +29,7 @@ export default function AddEatLogPage() {
         <button
           type="button"
           onClick={handleSave}
-          className="rounded-btn bg-terracotta px-4 py-1.5 text-sm font-bold text-white"
+          className="flex min-h-[44px] items-center rounded-btn bg-terracotta px-4 text-sm font-bold text-white"
         >
           保存
         </button>

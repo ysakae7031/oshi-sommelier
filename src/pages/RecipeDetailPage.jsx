@@ -64,10 +64,18 @@ export default function RecipeDetailPage() {
       onBack={true}
       action={
         <div className="flex items-center gap-3 text-sm">
-          <button type="button" onClick={() => navigate(`/recipes/${id}/edit`)} className="font-bold text-sage">
+          <button
+            type="button"
+            onClick={() => navigate(`/recipes/${id}/edit`)}
+            className="flex min-h-[44px] items-center font-bold text-sage"
+          >
             編集
           </button>
-          <button type="button" onClick={handleDelete} className="text-terracotta">
+          <button
+            type="button"
+            onClick={handleDelete}
+            className="flex min-h-[44px] items-center text-terracotta"
+          >
             削除
           </button>
         </div>
@@ -190,7 +198,7 @@ function ToggleButton({ active, onClick, icon, label }) {
     <button
       type="button"
       onClick={onClick}
-      className={`flex items-center gap-1 rounded-pill px-3 py-1.5 text-xs font-medium transition-colors ${
+      className={`flex min-h-[44px] items-center gap-1 rounded-pill px-3 py-1.5 text-xs font-medium transition-colors ${
         active ? "bg-terracotta text-white" : "border border-linen-edge bg-card text-charcoal"
       }`}
     >

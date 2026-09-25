@@ -13,11 +13,16 @@ export function loadState(fallback) {
   }
 }
 
+// 保存に成功したかどうかを返す。容量超過（QuotaExceededError）等で
+// 失敗した場合、呼び出し側でユーザーに知らせないとデータが静かに
+// 失われてしまうため、真偽値で結果を伝える。
 export function saveState(state) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    return true;
   } catch (err) {
     console.warn("KitchDom: failed to save state", err);
+    return false;
   }
 }
 
@@ -27,6 +32,7 @@ export function exportStateJson(state) {
 
 export function useStorage(initialState) {
   const [state, setState] = useState(() => loadState(initialState));
+  const [saveError, setSaveError] = useState(false);
   const isFirstRender = useRef(true);
 
   useEffect(() => {
@@ -34,13 +40,13 @@ export function useStorage(initialState) {
       isFirstRender.current = false;
       return;
     }
-    saveState(state);
+    setSaveError(!saveState(state));
   }, [state]);
 
   const replaceState = useCallback((nextState) => {
     setState(nextState);
-    saveState(nextState);
+    setSaveError(!saveState(nextState));
   }, []);
 
-  return [state, setState, replaceState];
+  return [state, setState, replaceState, saveError];
 }

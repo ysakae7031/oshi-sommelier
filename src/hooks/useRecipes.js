@@ -25,7 +25,7 @@ function buildRevisionSummary(before, after) {
 }
 
 export function useRecipes() {
-  const [state, setState, replaceState] = useStorage(createInitialState());
+  const [state, setState, replaceState, saveError] = useStorage(createInitialState());
 
   const addRecipe = useCallback(
     (partial) => {
@@ -188,6 +188,7 @@ export function useRecipes() {
 
   return {
     state,
+    saveError,
     recipes: state.recipes,
     pinnedRecipes,
     weekPins: state.weekPins,

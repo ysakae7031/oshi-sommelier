@@ -90,7 +90,7 @@ export default function IngredientGroupsEditor({ groups, onChange }) {
               type="button"
               onMouseDown={preventFocusSteal}
               onClick={() => removeGroup(gi)}
-              className="shrink-0 text-sm text-terracotta"
+              className="flex min-h-[44px] shrink-0 items-center text-sm text-terracotta"
             >
               グループ削除
             </button>
@@ -118,7 +118,7 @@ export default function IngredientGroupsEditor({ groups, onChange }) {
                   onMouseDown={preventFocusSteal}
                   onClick={() => removeItem(gi, ii)}
                   aria-label="材料を削除"
-                  className="shrink-0 px-1 text-warm-gray"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center text-lg text-warm-gray"
                 >
                   ×
                 </button>
@@ -129,7 +129,7 @@ export default function IngredientGroupsEditor({ groups, onChange }) {
             type="button"
             onMouseDown={preventFocusSteal}
             onClick={() => addItem(gi)}
-            className="mt-2 text-sm font-medium text-sage"
+            className="mt-2 flex min-h-[44px] items-center text-sm font-medium text-sage"
           >
             ＋ 材料を追加
           </button>
@@ -140,7 +140,7 @@ export default function IngredientGroupsEditor({ groups, onChange }) {
         type="button"
         onMouseDown={preventFocusSteal}
         onClick={addGroup}
-        className="text-sm font-medium text-sage"
+        className="flex min-h-[44px] items-center text-sm font-medium text-sage"
       >
         ＋ グループを追加
       </button>

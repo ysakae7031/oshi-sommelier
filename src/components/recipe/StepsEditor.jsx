@@ -27,7 +27,7 @@ export default function StepsEditor({ steps, onChange }) {
               type="button"
               onMouseDown={preventFocusSteal}
               onClick={() => removeStep(i)}
-              className="text-sm text-warm-gray"
+              className="flex min-h-[44px] items-center text-sm text-warm-gray"
             >
               削除
             </button>
@@ -73,7 +73,7 @@ export default function StepsEditor({ steps, onChange }) {
         type="button"
         onMouseDown={preventFocusSteal}
         onClick={addStep}
-        className="text-sm font-medium text-sage"
+        className="flex min-h-[44px] items-center text-sm font-medium text-sage"
       >
         ＋ 手順を追加
       </button>

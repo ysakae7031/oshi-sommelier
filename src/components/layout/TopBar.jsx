@@ -9,7 +9,7 @@ export default function TopBar({ title, onBack, action }) {
           <button
             type="button"
             onClick={onBack === true ? () => navigate(-1) : onBack}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-charcoal active:bg-linen-edge"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-charcoal active:bg-linen-edge"
             aria-label="戻る"
           >
             ←

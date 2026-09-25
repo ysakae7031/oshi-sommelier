@@ -10,7 +10,7 @@ export default function FilterChips({ value, onChange }) {
             key={filter.id}
             type="button"
             onClick={() => onChange(filter.id)}
-            className={`shrink-0 rounded-pill px-3.5 py-1.5 text-sm font-medium transition-colors ${
+            className={`min-h-[44px] shrink-0 rounded-pill px-3.5 py-1.5 text-sm font-medium transition-colors ${
               active
                 ? "bg-terracotta text-white"
                 : "bg-card text-charcoal border border-linen-edge"

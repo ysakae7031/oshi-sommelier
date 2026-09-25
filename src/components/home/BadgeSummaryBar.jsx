@@ -9,7 +9,7 @@ export default function BadgeSummaryBar({ recipes }) {
   return (
     <Link
       to="/settings/badges"
-      className="mb-3 flex items-center justify-between rounded-btn bg-amber-light px-3 py-2 text-sm font-medium text-charcoal active:opacity-80"
+      className="mb-3 flex min-h-[44px] items-center justify-between rounded-btn bg-amber-light px-3 py-2 text-sm font-medium text-charcoal active:opacity-80"
     >
       <span className="truncate">{text}</span>
       <span className="ml-2 shrink-0 text-warm-gray">›</span>
